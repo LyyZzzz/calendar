@@ -1,0 +1,263 @@
+* {
+  margin: 0;
+  padding: 0
+}
+
+body {
+  font-size: 14px;
+}
+
+#content {
+  width: min-content;
+  margin: 100px auto;
+  display: flex;
+}
+
+.img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#calendar {
+  width: 610px;
+  position: relative;
+  overflow: hidden;
+  background: #2d2d2d;
+  background-size: cover;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+}
+
+#calendar .calendar-content {
+  padding: 20px;
+}
+
+#calendar .calendar-content a,
+#calendar .calendar-content div,
+#calendar .calendar-content span{
+  z-index: 10;
+}
+
+#calendar .calendar-content .title-line {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+
+#calendar .home-part {
+  display: inline-flex;
+}
+
+#calendar .home-part .home-btn {
+  background-image: url("../img/home1.png");
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/*#calendar .title-line a {*/
+  /*z-index: 10;*/
+/*}*/
+
+#calendar .title-line .left-circle {
+  background-image: url("../img/left-circle1.png");
+  width: 20px;
+  height: 20px;
+  display: block;
+  box-shadow: yellow 1px 1px 15px;
+  border-radius: 50%;
+}
+
+#calendar .title-line .right-circle {
+  background-image: url("../img/right-circle1.png");
+  width: 20px;
+  height: 20px;
+  display: block;
+  box-shadow: yellow 1px 1px 15px;
+  border-radius: 50%;
+}
+
+#calendar .calendar-bg {
+  background-image: url("../img/0.jpg");
+  width: 100%;
+  height: 448px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  filter: blur(30px);
+  z-index: 9;
+  opacity: .6;
+}
+
+#calendar .change-month {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+
+}
+
+#calendar .change-month a {
+  /*z-index: 10;*/
+  text-decoration: none;
+  color: #FFF;
+}
+
+#calendar .week {
+  white-space: nowrap;
+  height: 30px;
+  line-height: 20px;
+  margin-top: 10px;
+  display: flex;
+}
+
+#calendar .week span {
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  text-align: center;
+}
+
+#calendar .dateList {
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#calendar .dateList .each-date {
+  width: 80px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /*z-index: 10;*/
+  cursor: pointer;
+}
+
+.each-date .calendar {
+  font-size: 10px;
+  /*color: #b2b2b2;*/
+}
+
+#calendar .dateList .gray {
+  color: #a7a7a7;
+}
+
+#calendar .dateList .pink {
+  background: #fc2fb7;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+}
+
+#calendar .dateList .weekend {
+  color: #7fffd4;
+}
+
+.calendarImg {
+  height: 448px;
+  width: 200px;
+  background-image: url("../img/0.jpg");
+}
+
+#tip {
+  border: 1px solid #7856f4;
+  border-top: 10px solid #7856f4;
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 6px;
+  padding: 10px;
+  z-index: 99;
+  background-color: #FFFFFF;
+  box-shadow: 2px 2px 12px #89e2d6;
+  position: fixed;
+  display: none;
+}
+
+#tip .festival-content {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+#tip .festival-icon {
+  background-image: url("../img/festival.png");
+  width: 18px;
+  height: 18px;
+  display: block;
+  margin-right: 4px;
+}
+
+#tip .tip-today {
+  font-size: 20px;
+  color: #d81e06;
+}
+
+#tip .tip-content {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#tip .part {
+  display: flex;
+  flex-direction: column;
+  line-height: 24px;
+}
+
+#tip .part:first-child {
+  margin-right: 10px;
+}
+
+#tip .tip-week {
+  font-size: 16px;
+  font-weight: 600;
+  /*color: red;*/
+}
+
+#tip .tip-journal{
+  margin-top: 10px;
+  line-height: 16px;
+  font-size: 12px;
+  color: #666666;
+  display: none;
+}
+
+#tip .tip-journal .journal-title {
+  display: inline-flex;
+  align-items: center;
+}
+
+#tip .tip-journal .record {
+  background-image: url("../img/record.png");
+  width: 14px;
+  height: 14px;
+  display: block;
+  margin-right: 2px;
+}
+
+
+#tip .tip-journal .journal-msg {
+  word-break: break-word;
+}
+
+@media screen and (max-width:810px) {
+  #content {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .calendarImg {
+    width: 610px;
+  }
+}
+/*滚动条样式*/

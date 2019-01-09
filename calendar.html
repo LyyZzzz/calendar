@@ -1,0 +1,100 @@
+<!--created by Lee on 2019/1/7 ‏‎10:10:23-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>calendar</title>
+  <link rel="icon" type="image/x-icon" href="calendar.png"/>
+  <link href="./css/calendar.css" rel="stylesheet" type="text/css"/>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/css/bootstrap.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.2.1/js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+<div id="tip">
+  <div class="festival-content">
+    <span class="img festival-icon"></span>
+    <span class="tip-today">今日</span>
+  </div>
+  <div class="tip-content">
+    <span class="part">
+      <span class="tip-week">星期六</span>
+      <span class="tip-weekEng">Saturday</span>
+    </span>
+    <span class="part">
+      <span>（
+        <span class="zodiac">狗</span>）
+        <span class="tip-annals">戊戌年</span>
+      </span>
+      <span class="tip-lunarCalendar">农历冬月廿六</span>
+    </span>
+  </div>
+  <div class="tip-journal">
+    <div class="journal-title"><span class="img record"></span>日志：</div>
+    <div class="journal-msg"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="img calendarImg"></div>
+  <div id="calendar">
+    <div class="calendar-content">
+      <div class="title-line">
+        <a href="##" rel="external nofollow" class="a1"><span class="img left-circle"></span></a>
+        <div class="home-part"><span class="img home-btn"></span><div class="title"></div></div>
+        <a href="##" rel="external nofollow" class="a2"><span class="img right-circle"></span></a>
+      </div>
+      <!--<div class="change-month">-->
+        <!--<a href="##" rel="external nofollow" class="a1">上月</a>-->
+        <!--<a href="##" rel="external nofollow" class="a2">下月</a>-->
+      <!--</div>-->
+
+      <div class="week">
+        <span>SUN</span>
+        <span>MON</span>
+        <span>TUE</span>
+        <span>WED</span>
+        <span>THU</span>
+        <span>FRI</span>
+        <span>SAT</span>
+      </div>
+      <div class="dateList" id="dateList"></div>
+    </div>
+    <div class="img calendar-bg"></div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">日志</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea style="resize:none" id="journal" class="form-control" rows="3" placeholder="在此添加日志..."></textarea>
+        <!--<span class="">清空</span>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="./js/calendar.js"></script>
+<script src="./js/dateDetail.js"></script>
+<script>
+</script>
+</body>
+
+</html>
