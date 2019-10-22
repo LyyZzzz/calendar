@@ -1,6 +1,3 @@
-/**
-* created by Lee on 2019/1/9 12:07
-*/
 $(function () {
 
   //必要的数据
@@ -65,8 +62,8 @@ $(function () {
     //判断本月第一天是星期几
     oDate.setDate(1); //时间调整到本月第一天
     var week = oDate.getDay(); //读取本月第一天是星期几
-
     //console.log(week);
+
     $(".dateList").empty(); //每次清空
     //插入空白
 
@@ -77,8 +74,11 @@ $(function () {
     //日期插入到dateList
     for (var i = 1; i <= allDay; i++) {
       hasFestival = "";
-      $(".dateList").append("<div class='each-date date"+i+" ' data-toggle='modal' data-target='#exampleModal'><span class='num'>" + i + "</span><span class='calendar'>" + festivalView(getLunarCalendar(i),month + 1,i) + "</span></div>")
-      $(`.date${i}`).attr("festival",hasFestival)
+      $(".dateList").append("<div class='each-date date" + i + " ' data-toggle='modal' data-target='#exampleModal'>" +
+        "<span class='num'>" + i + "</span>" +
+        "<span class='calendar'>" + festivalView(getLunarCalendar(i), month + 1, i) + "</span>" +
+        "</div>")
+      $(`.date${i}`).attr("festival", hasFestival)
     }
     //标记颜色=====================
     $(".dateList .each-date").each(function (i, elm) {
@@ -130,17 +130,21 @@ $(function () {
     /**
      * 获取当日是否是农历假日
      */
-    function festivalView(lunarCalendar,month,date) {
-      if(Object.keys(lunarFestivals).indexOf(lunarCalendar) != -1) {
+    function festivalView(lunarCalendar, month, date) {
+      if (Object.keys(lunarFestivals).indexOf(lunarCalendar) != -1) {
         hasFestival = lunarFestivals[lunarCalendar]
         return lunarFestivals[lunarCalendar]
       } else {
-        let day = ( month > 9 ? month + '' : "0" + month) + ( date > 9 ? date + '' : "0" + date);
-        if(Object.keys(gregorianFestivals).indexOf(day) != -1) {
+        let day = (month > 9 ? month + '' : "0" + month) + (date > 9 ? date + '' : "0" + date);
+        if (Object.keys(gregorianFestivals).indexOf(day) != -1) {
           hasFestival = gregorianFestivals[day]
           return gregorianFestivals[day]
-        }else {
-          return lunarCalendar.slice(2, 4)
+        } else {
+          if (lunarCalendar.indexOf('闰') != -1) {
+            return lunarCalendar.slice(5, 7);
+          } else {
+            return lunarCalendar.slice(2, 4);
+          }
         }
       }
     }
@@ -150,7 +154,7 @@ $(function () {
      */
     var contentTop = document.getElementById("content").getBoundingClientRect().top;
     var scrollTop = contentTop > 0 ? 0 : document.documentElement.scrollTop;
-    window.onscroll = function() {
+    window.onscroll = function () {
       contentTop = document.getElementById("content").getBoundingClientRect().top;
       scrollTop = contentTop > 0 ? 0 : document.documentElement.scrollTop;
     };
@@ -161,10 +165,10 @@ $(function () {
       let date = $(this).find(".num").text();
       if (date) {
         let journal = window.localStorage.getItem("yyJournal");
-        let obj = journal?JSON.parse(journal):{};
+        let obj = journal ? JSON.parse(journal) : {};
         todayJournal = "";
-        let day = new Date(year,month,date).getTime() + '';
-        if(obj && Object.keys(obj).indexOf(day) != -1) {
+        let day = new Date(year, month, date).getTime() + '';
+        if (obj && Object.keys(obj).indexOf(day) != -1) {
           todayJournal = obj[day];
         }
         let arr = "鼠牛虎兔龙蛇马羊猴鸡狗猪".split(/(?!\b)/);
@@ -172,7 +176,7 @@ $(function () {
           'timeStamp': new Date(year, month, date).getTime()
         });
         let festival = $(this).attr("festival");
-        if(festival) {
+        if (festival) {
           $(".festival-content").show();
           $(".festival-icon").show();
           $(".tip-today").html(festival);
@@ -190,7 +194,7 @@ $(function () {
         $("#tip .tip-annals").html(todayMsg.aL.annals);
         $("#tip .zodiac").html(arr[(year - 1912) % 12]);
         $("#tip .tip-lunarCalendar").html("农历" + todayMsg.aL.lunarCalendar);
-        if(todayJournal) {
+        if (todayJournal) {
           $(".journal-msg").html(todayJournal);
           $(".tip-journal").show();
         } else {
@@ -203,7 +207,7 @@ $(function () {
         }).show(); //设置x坐标和y坐标，并且显示
       }
     }).mousemove(function (e) {
-      if(e.pageX + x + 300 >= document.body.clientWidth) {
+      if (e.pageX + x + 300 >= document.body.clientWidth) {
         $("#tip").css({
           "top": (e.pageY - scrollTop + y) + "px",
           "left": (e.pageX - 200) + "px"
@@ -220,11 +224,11 @@ $(function () {
 
     $(".btn-primary").click(function () {
       let journal = $("#journal").val();
-      let day = new Date(year,month,clickDay).getTime();
+      let day = new Date(year, month, clickDay).getTime();
       yyJournal = window.localStorage.getItem("yyJournal");
-      let obj = yyJournal?JSON.parse(yyJournal):{};
+      let obj = yyJournal ? JSON.parse(yyJournal) : {};
       obj[day] = journal;
-      window.localStorage.setItem('yyJournal',JSON.stringify(obj))
+      window.localStorage.setItem('yyJournal', JSON.stringify(obj))
     })
   };
 
@@ -252,20 +256,20 @@ $(function () {
   });
 
   $(".a1").hover(function () {
-    $(".left-circle").css("background-image",'url("img/left-circle.png")')
-  },function () {
-    $(".left-circle").css("background-image",'url("img/left-circle1.png")')
+    $(".left-circle").css("background-image", 'url("img/left-circle.png")')
+  }, function () {
+    $(".left-circle").css("background-image", 'url("img/left-circle1.png")')
   })
 
   $(".a2").hover(function () {
-    $(".right-circle").css("background-image",'url("img/right-circle.png")')
-  },function () {
-    $(".right-circle").css("background-image",'url("img/right-circle1.png")')
+    $(".right-circle").css("background-image", 'url("img/right-circle.png")')
+  }, function () {
+    $(".right-circle").css("background-image", 'url("img/right-circle1.png")')
   })
 
   $(".home-btn").hover(function () {
-    $(".home-btn").css("background-image",'url("img/home.png")')
-  },function () {
-    $(".home-btn").css("background-image",'url("img/home1.png")')
+    $(".home-btn").css("background-image", 'url("img/home.png")')
+  }, function () {
+    $(".home-btn").css("background-image", 'url("img/home1.png")')
   })
 });
